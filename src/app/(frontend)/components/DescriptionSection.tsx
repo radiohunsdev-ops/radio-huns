@@ -27,16 +27,18 @@ export default function DescriptionSection({ heading, body }: DescriptionSection
   }
 
   return (
-    <div className="max-w-8xl mx-auto px-6 py-20 grid grid-cols-[40%_60%] items-start">
-      <h1
-        className={`text-[78px] ml-7.5 max-w-lg font-serif font-extrabold leading-[1.05] tracking-wide ${headingColor}`}
-      >
-        {formatHeading(heading)}
-      </h1>
+    <div>
+      <div className="max-w-8xl container mx-auto px-6 py-20 grid grid-cols-[40%_60%] items-start">
+        <h1
+          className={`text-[78px] ml-7.5 max-w-lg font-serif font-extrabold leading-[1.05] tracking-wide ${headingColor}`}
+        >
+          {formatHeading(heading)}
+        </h1>
 
-      <div className="text-[#3B4A54] font-serif text-xl max-w-4xl leading-relaxed space-y-6">
-        <div className="max-w-full mt-0 text-[1.4vw] [&_a]:text-[#E55322] [&_a]:underline [&_ol]:list-decimal [&_ol]:pl-6 [&_li]:mb-2">
-          <RichText data={body} />
+        <div className="text-[#3B4A54] font-serif text-xl max-w-4xl leading-relaxed space-y-6">
+          <div className="max-w-full mt-0 text-[1.4vw] [&_a]:text-[#E55322] [&_a]:underline [&_ol]:list-decimal [&_ol]:pl-6 [&_li]:mb-2">
+            <RichText data={body} />
+          </div>
         </div>
       </div>
     </div>

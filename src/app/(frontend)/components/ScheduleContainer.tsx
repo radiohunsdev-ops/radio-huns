@@ -109,7 +109,7 @@ export default function ScheduleContainer({
   if (total === 0) return null
 
   return (
-    <div className="relative z-30 -bottom-30 w-fit mx-auto grid grid-cols-[auto_1fr] gap-5">
+    <div className="relative   z-30 -bottom-30 w-fit mx-auto grid grid-cols-[auto_1fr] gap-5">
       <div className="w-120" />
       <div className="relative flex items-center">
         <button

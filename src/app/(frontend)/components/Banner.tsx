@@ -32,7 +32,7 @@ export default function Banner({ title, headline, image, textColor }: BannerProp
   }
 
   return (
-    <section className="max-w-8xl container  bg-[#E75023] px-18  mx-auto">
+    <section className="max-w-8xl container   px-18  mx-auto">
       <div className="absolute inset-0">
         <img
           src={image?.url}

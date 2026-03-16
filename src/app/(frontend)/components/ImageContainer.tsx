@@ -10,7 +10,7 @@ type ImageProps = {
 const ImageContainer = ({ image }: ImageProps) => {
   return (
     <section>
-      <div className="w-full h-140">
+      <div className="w-full h-180">
         <img src={image?.url} alt={image?.alt || 'Hero background'} className="w-full h-full" />
       </div>
     </section>

@@ -47,12 +47,12 @@
   left: -10vw;
 }
 .section-half-text-fill svg {
-    position: relative;
-    width: 60vw;
-    height: 60vw;
+  position: relative;
+  width: 60vw;
+  height: 60vw;
 }
 .section-half-text-fill svg {
-    fill: #f9b855;
+  fill: #f9b855;
 }
 @theme {
   --animate-slide-out-left: slideOutLeft 500ms ease-in-out forwards;

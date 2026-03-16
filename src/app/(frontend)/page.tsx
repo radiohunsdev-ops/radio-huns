@@ -10,6 +10,7 @@ import CommunitySection from './components/CommunitySection'
 import ImageContainer from './components/ImageContainer'
 import Halvesection from './components/Halvesection'
 import TributeDisclaimer from './components/TributeDisclaimer'
+import Footer from './components/footer/Footer'
 
 type Page = {
   title: string
@@ -19,7 +20,6 @@ type Page = {
 export default async function HomePage() {
   const page = (await getPageBySlug('homepage')) as Page | null
   const schedules = await getActiveSchedule()
-
   if (!page) return <div>not found</div>
   return (
     <main>
@@ -34,7 +34,9 @@ export default async function HomePage() {
                   headline={block.headline}
                   image={block.image}
                 />
-                <ScheduleBox schedules={schedules} />
+                <div className="bg-white">
+                  <ScheduleBox schedules={schedules} />
+                </div>
               </div>
             )
           case 'contentSection':
@@ -79,6 +81,7 @@ export default async function HomePage() {
             return null
         }
       })}
+      <Footer />
     </main>
   )
 }

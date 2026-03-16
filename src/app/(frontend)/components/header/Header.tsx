@@ -26,7 +26,6 @@ const Header = () => {
               `}
             >
               {item.label}
-
               <span
                 className={`absolute left-0 -bottom-1 h-0.5 bg-orange-300 transition-all duration-300
                   ${isActive ? 'w-full' : 'w-0 group-hover:w-full'}
