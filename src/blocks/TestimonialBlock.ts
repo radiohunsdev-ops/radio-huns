@@ -1,45 +1,37 @@
-import { Block } from "payload";
-
+import { Block } from 'payload'
 
 export const TestimonialBlock: Block = {
-  slug: "testimonial",
+  slug: 'testimonial',
   labels: {
-    singular: "Testimonial",
-    plural: "Testimonials",
+    singular: 'Testimonial',
+    plural: 'Testimonials',
   },
   fields: [
     {
-      name: "quote",
-      type: "textarea",
+      name: 'quote',
+      type: 'textarea',
       required: true,
-      label: "Quote",
+      label: 'Quote',
     },
     {
-      name: "author",
-      type: "text",
+      name: 'author',
+      type: 'text',
       required: true,
-      label: "Author",
+      label: 'Author',
     },
     {
-      name: "colorScheme",
-      type: "radio",
+      name: 'bgColor',
+      type: 'text',
+      label: 'Background Color (Hex)',
+      defaultValue: '#F3E6D4',
       required: true,
-      defaultValue: "highlight-on-beige",
-      label: "Colour Scheme",
-      options: [
-        {
-          label: "Beige text on highlight background",
-          value: "beige-on-highlight",
-        },
-        {
-          label: "Highlight colour on yellow background",
-          value: "highlight-on-yellow",
-        },
-        {
-          label: "Highlight colour on beige background",
-          value: "highlight-on-beige",
-        },
-      ],
+    },
+    {
+      name: 'textColor',
+      type: 'text',
+      label: 'Text Color (Hex)',
+      defaultValue: '#E75023',
+      required: true,
     },
   ],
-};
+}

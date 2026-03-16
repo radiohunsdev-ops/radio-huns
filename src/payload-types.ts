@@ -226,7 +226,8 @@ export interface Page {
           }
         | {
             body: string;
-            colourScheme: 'beigeOnHighlight' | 'highlightOnYellow' | 'highlightOnBeige';
+            bgColor: string;
+            textColor: string;
             id?: string | null;
             blockName?: string | null;
             blockType: 'highlightTextSection';
@@ -298,7 +299,8 @@ export interface Page {
         | {
             quote: string;
             author: string;
-            colorScheme: 'beige-on-highlight' | 'highlight-on-yellow' | 'highlight-on-beige';
+            bgColor: string;
+            textColor: string;
             id?: string | null;
             blockName?: string | null;
             blockType: 'testimonial';
@@ -750,7 +752,8 @@ export interface PagesSelect<T extends boolean = true> {
           | T
           | {
               body?: T;
-              colourScheme?: T;
+              bgColor?: T;
+              textColor?: T;
               id?: T;
               blockName?: T;
             };
@@ -794,7 +797,8 @@ export interface PagesSelect<T extends boolean = true> {
           | {
               quote?: T;
               author?: T;
-              colorScheme?: T;
+              bgColor?: T;
+              textColor?: T;
               id?: T;
               blockName?: T;
             };

@@ -5,6 +5,7 @@ import Banner from '../components/Banner'
 import ScheduleBox from '../components/ScheduleBox'
 import DescriptionSection from '../components/DescriptionSection'
 import HostSection from '../components/HostSection'
+import Footer from '../components/footer/Footer'
 
 type Page = {
   title: string
@@ -46,6 +47,7 @@ export default async function HomePage() {
             return null
         }
       })}
+      <Footer />
     </main>
   )
 }

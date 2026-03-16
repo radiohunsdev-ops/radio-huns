@@ -6,6 +6,7 @@ export const Gallery: Block = {
     singular: 'Gallery',
     plural: 'Gallery',
   },
+  
   fields: [
     {
       name: 'title',

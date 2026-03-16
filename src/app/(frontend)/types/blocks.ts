@@ -26,7 +26,8 @@ export type HighlightTextSectionBlock = {
   id: string
   blockType: 'highlightTextSection'
   body: string
-  colourScheme?: 'beigeOnHighlight' | 'orangeOnWhite'
+  bgColor: string
+  textColor: string
 }
 
 // ----slides images----//
@@ -76,7 +77,8 @@ export type TributeDisclaimerBlock = {
   blockType: 'testimonial'
   quote: string
   author: string
-  colorScheme: string
+  bgColor: string
+  textColor: string
 }
 
 export type RichText = {
@@ -268,6 +270,7 @@ export type Gallery = {
     }
   }[]
 }
+
 export type PageBlock =
   | BannerBlock
   | ContentSectionBlock

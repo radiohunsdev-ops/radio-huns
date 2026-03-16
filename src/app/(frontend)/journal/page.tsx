@@ -4,6 +4,7 @@ import { getActiveSchedule } from '@/lib/getSchedule'
 import Banner from '../components/Banner'
 import ScheduleBox from '../components/ScheduleBox'
 import CardSection from '../components/CardSection'
+import Footer from '../components/footer/Footer'
 
 type Page = {
   title: string
@@ -41,6 +42,7 @@ export default async function Advertise() {
             return null
         }
       })}
+      <Footer />
     </main>
   )
 }

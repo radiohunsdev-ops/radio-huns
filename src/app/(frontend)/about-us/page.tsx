@@ -11,6 +11,7 @@ import Halvesection from '../components/Halvesection'
 import TributeDisclaimer from '../components/TributeDisclaimer'
 import GallerySection from '../components/image-slider/GallerySection'
 import VideoSection from '../components/VideoSection'
+import Footer from '../components/footer/Footer'
 
 type Page = {
   title: string
@@ -43,7 +44,12 @@ export default async function HomePage() {
             return <GallerySection key={block.id} slides={block.slides} />
           case 'highlightTextSection':
             return (
-              <QuoteSection key={block.id} body={block.body} colourScheme={block.colourScheme} />
+              <QuoteSection
+                key={block.id}
+                body={block.body}
+                bgColor={block.bgColor}
+                textColor={block.textColor}
+              />
             )
           case 'community-section':
             return (
@@ -72,16 +78,18 @@ export default async function HomePage() {
           case 'testimonial':
             return (
               <TributeDisclaimer
-                colourScheme=""
                 key={block.id}
                 author={block.author}
                 quote={block.quote}
+                bgColor={block.bgColor}
+                textColor={block.textColor}
               />
             )
           default:
             return null
         }
       })}
+      <Footer />
     </main>
   )
 }

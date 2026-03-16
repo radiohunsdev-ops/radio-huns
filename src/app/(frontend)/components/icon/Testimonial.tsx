@@ -1,11 +1,10 @@
 import React from 'react'
 
 type TestimonialProps = {
-  colourScheme: string
+  textColor: string
 }
 
-const Testimonial = ({ colourScheme }: TestimonialProps) => {
-  const fillColor = colourScheme === 'highlight-on-yellow' ? '#F3E6D4' : '#F9B855'
+const Testimonial = ({ textColor }: TestimonialProps) => {
   return (
     <div className="section-testimonial-bg">
       <svg
@@ -15,7 +14,7 @@ const Testimonial = ({ colourScheme }: TestimonialProps) => {
         xmlnsXlink="http://www.w3.org/1999/xlink"
         x="0px"
         y="0px"
-        fill={fillColor}
+        fill={textColor}
         viewBox="0 0 370.4 342.4"
         xmlSpace="preserve"
       >

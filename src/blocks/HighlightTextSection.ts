@@ -14,25 +14,18 @@ export const HighlightTextSection: Block = {
       label: 'Body',
     },
     {
-      name: 'colourScheme',
-      type: 'radio',
+      name: 'bgColor',
+      type: 'text',
+      label: 'Background Color (Hex)',
+      defaultValue: '#E85B2A',
       required: true,
-      label: 'Colour Scheme',
-      options: [
-        {
-          label: 'Beige text on highlight background',
-          value: 'beigeOnHighlight',
-        },
-        {
-          label: 'Highlight colour on yellow background',
-          value: 'highlightOnYellow',
-        },
-        {
-          label: 'Highlight colour on beige background',
-          value: 'highlightOnBeige',
-        },
-      ],
-      defaultValue: 'beigeOnHighlight',
+    },
+    {
+      name: 'textColor',
+      type: 'text',
+      label: 'Text Color (Hex)',
+      defaultValue: '#ffffff',
+      required: true,
     },
   ],
 }

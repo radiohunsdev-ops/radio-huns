@@ -2,19 +2,17 @@ import React from 'react'
 
 type QuoteSectionProps = {
   body: string
-  colourScheme?: 'beigeOnHighlight' | 'orangeOnWhite' // add more schemes if needed
+  bgColor: string
+  textColor: string
 }
 
-const QuoteSection: React.FC<QuoteSectionProps> = ({ body, colourScheme }) => {
-  const bgColor = colourScheme === 'beigeOnHighlight' ? 'bg-[#E85B2A]' : 'bg-[#E85B2A]'
-
-  const textColor = colourScheme === 'beigeOnHighlight' ? 'text-white' : 'text-white'
-
+const QuoteSection: React.FC<QuoteSectionProps> = ({ body, bgColor, textColor }) => {
   return (
-    <section className={`w-full ${bgColor}`}>
-      <div className="max-w-3xl mx-auto  py-22 flex items-center justify-center">
+    <section className="w-full" style={{ backgroundColor: bgColor }}>
+      <div className="max-w-3xl mx-auto py-22 flex items-center justify-center">
         <p
-          className={`text-center font-serif text-3xl font-extralight leading-relaxed  ${textColor}`}
+          className="text-center font-serif text-3xl font-extralight leading-relaxed"
+          style={{ color: textColor }}
         >
           {body}
         </p>

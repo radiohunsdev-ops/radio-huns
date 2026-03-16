@@ -7,6 +7,7 @@ import CalendarSection from '../components/CalendarSection'
 import TributeDisclaimer from '../components/TributeDisclaimer'
 import SupportPromotionSection from '../components/SupportPromotionSection'
 import ImageContainer from '../components/ImageContainer'
+import Footer from '../components/footer/Footer'
 type Page = {
   title: string
   layout: PageBlock[]
@@ -40,10 +41,11 @@ export default async function HomePage() {
           case 'testimonial':
             return (
               <TributeDisclaimer
-                colourScheme={block.colorScheme}
                 key={block.id}
                 author={block.author}
                 quote={block.quote}
+                bgColor={block.bgColor}
+                textColor={block.textColor}
               />
             )
           case 'supportPromotion':
@@ -61,6 +63,7 @@ export default async function HomePage() {
             return null
         }
       })}
+      <Footer />
     </main>
   )
 }

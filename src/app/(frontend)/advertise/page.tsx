@@ -7,6 +7,7 @@ import SponsorsSection from '../components/SponsorsSection'
 import CommunitySection from '../components/CommunitySection'
 import PricingSection from '../components/PricingSection'
 import TributeDisclaimer from '../components/TributeDisclaimer'
+import Footer from '../components/footer/Footer'
 
 type Page = {
   title: string
@@ -62,16 +63,18 @@ export default async function Advertise() {
           case 'testimonial':
             return (
               <TributeDisclaimer
-                colourScheme=""
                 key={block.id}
                 author={block.author}
                 quote={block.quote}
+                bgColor={block.bgColor}
+                textColor={block.textColor}
               />
             )
           default:
             return null
         }
       })}
+      <Footer />
     </main>
   )
 }

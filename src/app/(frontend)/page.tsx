@@ -45,7 +45,12 @@ export default async function HomePage() {
             return <ScheduleSection key={block.id} schedules={schedules} />
           case 'highlightTextSection':
             return (
-              <QuoteSection key={block.id} body={block.body} colourScheme={block.colourScheme} />
+              <QuoteSection
+                key={block.id}
+                body={block.body}
+                bgColor={block.bgColor}
+                textColor={block.textColor}
+              />
             )
           case 'community-section':
             return (
@@ -71,10 +76,11 @@ export default async function HomePage() {
           case 'testimonial':
             return (
               <TributeDisclaimer
-                colourScheme=""
                 key={block.id}
                 author={block.author}
                 quote={block.quote}
+                bgColor={block.bgColor}
+                textColor={block.textColor}
               />
             )
           default:

@@ -9,6 +9,7 @@ import DescriptionSection from '../components/DescriptionSection'
 import ScheduleSection from '../components/ScheduleSection'
 import QuoteSection from '../components/QouteSection'
 import Halvesection from '../components/Halvesection'
+import Footer from '../components/footer/Footer'
 
 type Page = {
   title: string
@@ -53,15 +54,21 @@ export default async function Advertise() {
           case 'testimonial':
             return (
               <TributeDisclaimer
-                colourScheme=""
                 key={block.id}
                 author={block.author}
                 quote={block.quote}
+                bgColor={block.bgColor}
+                textColor={block.textColor}
               />
             )
           case 'highlightTextSection':
             return (
-              <QuoteSection key={block.id} body={block.body} colourScheme={block.colourScheme} />
+              <QuoteSection
+                key={block.id}
+                body={block.body}
+                bgColor={block.bgColor}
+                textColor={block.textColor}
+              />
             )
           case 'halves-section':
             return (
@@ -76,6 +83,7 @@ export default async function Advertise() {
             return null
         }
       })}
+      <Footer />
     </main>
   )
 }

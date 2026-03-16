@@ -42,7 +42,9 @@ export default function CalendarSection({ heading, body }: DescriptionSectionPro
               <p className="max-w-xl text-[#2E3A3A] text-lg leading-relaxed">
                 {body?.root?.children?.map((node, index) => {
                   if (node.type === 'paragraph') {
-                    return <p key={index}>{node.children?.map((child) => child.text).join('')}</p>
+                    return (
+                      <span key={index}>{node.children?.map((child) => child.text).join('')}</span>
+                    )
                   }
                   return null
                 })}

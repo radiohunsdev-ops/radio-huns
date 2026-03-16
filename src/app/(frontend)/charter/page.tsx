@@ -5,6 +5,7 @@ import Banner from '../components/Banner'
 import ScheduleBox from '../components/ScheduleBox'
 import DescriptionSection from '../components/DescriptionSection'
 import QuoteSection from '../components/QouteSection'
+import Footer from '../components/footer/Footer'
 
 type Page = {
   title: string
@@ -36,12 +37,18 @@ export default async function Advertise() {
             return <DescriptionSection key={block.id} heading={block.heading} body={block.body} />
           case 'highlightTextSection':
             return (
-              <QuoteSection key={block.id} body={block.body} colourScheme={block.colourScheme} />
+              <QuoteSection
+                key={block.id}
+                body={block.body}
+                bgColor={block.bgColor}
+                textColor={block.textColor}
+              />
             )
           default:
             return null
         }
       })}
+      <Footer />
     </main>
   )
 }
