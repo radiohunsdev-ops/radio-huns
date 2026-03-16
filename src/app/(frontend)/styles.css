@@ -1,0 +1,98 @@
+@import 'tailwindcss';
+
+.section-half-social-fill svg {
+  fill: #f9b855;
+}
+.section-half-social-fill {
+  position: absolute;
+  bottom: -14vw;
+  right: -5vw;
+  left: -10vw;
+}
+.section-testimonial-bg {
+  position: absolute;
+  right: -0.1vw;
+  bottom: -0.1vw;
+  width: 25%;
+}
+.section-form-filler {
+  display: block;
+  position: absolute;
+  bottom: 0px;
+  left: -6vw;
+  right: -10vw;
+}
+.section-form-filler svg {
+  display: block;
+  width: 100%;
+  height: 40vw;
+}
+.section-calendar-filler svg {
+  display: block;
+  width: 95%;
+  height: 39vw;
+}
+.section-calendar-filler {
+  display: block;
+  position: absolute;
+  bottom: 1px;
+  left: -5vw;
+  right: -12vw;
+}
+
+.section-half-text-fill {
+  position: absolute;
+  bottom: -14vw;
+  right: -5vw;
+  left: -10vw;
+}
+.section-half-text-fill svg {
+    position: relative;
+    width: 60vw;
+    height: 60vw;
+}
+.section-half-text-fill svg {
+    fill: #f9b855;
+}
+@theme {
+  --animate-slide-out-left: slideOutLeft 500ms ease-in-out forwards;
+  --animate-slide-out-right: slideOutRight 500ms ease-in-out forwards;
+  --animate-slide-in-right: slideInFromRight 500ms ease-in-out forwards;
+  --animate-slide-in-left: slideInFromLeft 500ms ease-in-out forwards;
+
+  @keyframes slideOutLeft {
+    from {
+      transform: translateX(0);
+    }
+    to {
+      transform: translateX(-100%);
+    }
+  }
+
+  @keyframes slideOutRight {
+    from {
+      transform: translateX(0);
+    }
+    to {
+      transform: translateX(100%);
+    }
+  }
+
+  @keyframes slideInFromRight {
+    from {
+      transform: translateX(100%);
+    }
+    to {
+      transform: translateX(0);
+    }
+  }
+
+  @keyframes slideInFromLeft {
+    from {
+      transform: translateX(-100%);
+    }
+    to {
+      transform: translateX(0);
+    }
+  }
+}
