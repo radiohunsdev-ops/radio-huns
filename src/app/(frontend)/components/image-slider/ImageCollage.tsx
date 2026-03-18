@@ -24,27 +24,55 @@ export default function ImageCollage({ slides }: ImageCollageProps) {
   const gridImages = allImages.slice(1, 5)
 
   return (
-    <div className="h-full w-full grid grid-cols-[60%_40%]">
-      <div className="relative">
+    <div className="w-full">
+      <div className="block md:hidden">
         {mainImage && (
-          <img
-            src={mainImage.url}
-            alt={mainImage.alt || ''}
-            className="absolute inset-0 w-full h-full object-cover"
-          />
-        )}
-      </div>
-
-      <div className="grid grid-cols-2 grid-rows-2">
-        {gridImages.map((image) => (
-          <div key={image.id} className="relative h-full">
+          <div className="relative w-full aspect-4/3">
             <img
-              src={image.url}
-              alt={image.alt || ''}
+              src={mainImage.url}
+              alt={mainImage.alt || ''}
               className="absolute inset-0 w-full h-full object-cover"
             />
           </div>
-        ))}
+        )}
+
+        {gridImages.length > 0 && (
+          <div className="grid grid-cols-2">
+            {gridImages.map((image) => (
+              <div key={image.id} className="relative aspect-square">
+                <img
+                  src={image.url}
+                  alt={image.alt || ''}
+                  className="absolute inset-0 w-full h-full object-cover"
+                />
+              </div>
+            ))}
+          </div>
+        )}
+      </div>
+
+      <div className="hidden md:grid md:grid-cols-[60%_40%] md:h-[80vh]">
+        <div className="relative">
+          {mainImage && (
+            <img
+              src={mainImage.url}
+              alt={mainImage.alt || ''}
+              className="absolute inset-0 w-full h-full object-cover"
+            />
+          )}
+        </div>
+
+        <div className="grid grid-cols-2 grid-rows-2">
+          {gridImages.map((image) => (
+            <div key={image.id} className="relative h-full">
+              <img
+                src={image.url}
+                alt={image.alt || ''}
+                className="absolute inset-0 w-full h-full object-cover"
+              />
+            </div>
+          ))}
+        </div>
       </div>
     </div>
   )

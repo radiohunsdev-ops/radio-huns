@@ -1,19 +1,22 @@
 export default function SubmitEventSection() {
   return (
-    <section className="min-h-screen grid grid-cols-[40%_60%] font-serif">
-      <div className=" bg-[#EADCC8]  flex flex-col justify-between">
-        <div className="px-20 py-24">
-          <h1 className="font-serif text-[80px] font-extrabold leading-[0.95] text-[#E55322]">
+    <section className="min-h-screen font-serif lg:grid lg:grid-cols-[40%_60%]">
+      {/* Left Panel */}
+      <div className="bg-[#EADCC8] flex flex-col justify-between">
+        <div className="px-6 py-10 sm:px-10 sm:py-14 lg:px-20 lg:py-24">
+          <h1 className="font-serif text-[48px] sm:text-[64px] lg:text-[80px] font-extrabold leading-[0.95] text-[#E55322]">
             Submit an <br /> event
           </h1>
-          <p className="mt-10 max-w-md text-[#E55322] text-lg leading-relaxed">
+          <p className="mt-6 lg:mt-10 max-w-md text-[#E55322] text-base sm:text-lg leading-relaxed">
             Please submit your event details using the form.
             <br />
             Once your event has been approved, it will be added to the community calendar.
           </p>
         </div>
-        <div className="relative w-full h-[80vh] overflow-hidden">
-          <div className="section-form-filler ">
+
+        {/* Decorative SVG — hidden on small/medium, shown on large */}
+        <div className="relative w-full h-[80vh] overflow-hidden hidden lg:block">
+          <div className="section-form-filler">
             <svg
               version="1.1"
               xmlns="http://www.w3.org/2000/svg"
@@ -34,26 +37,31 @@ export default function SubmitEventSection() {
         </div>
       </div>
 
-      <div className="bg-[#F6F1E7] px-24 py-20">
-        <form className="space-y-14 max-w-3xl">
-          <FormField label="Organiser’s name *" />
-          <div className="grid grid-cols-2 gap-16">
+      <div className="bg-[#F6F1E7] px-6 py-10 sm:px-10 sm:py-14 lg:px-24 lg:py-20">
+        <form className="space-y-8 sm:space-y-10 lg:space-y-14 max-w-3xl">
+          <FormField label="Organiser's name *" />
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-8 sm:gap-10 lg:gap-16">
             <FormField label="Email address *" />
             <FormField label="Telephone number *" />
           </div>
+
           <FormField label="Event title *" />
-          <div className="grid grid-cols-2 gap-16">
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-8 sm:gap-10 lg:gap-16">
             <FormField label="Event date *" />
             <FormField label="Event time *" />
           </div>
+
           <FormTextarea label="Event location/address *" rows={2} />
           <FormTextarea label="Free or paid? (Add ticketing links if applicable) *" rows={3} />
           <FormTextarea label="Event description *" rows={3} />
-          <div className="flex items-center justify-between pt-8">
+
+          <div className="flex items-center justify-between pt-4 sm:pt-6 lg:pt-8">
             <p className="text-sm text-[#E55322]">* Mandatory fields</p>
-            <button className="flex items-center gap-4 text-[#E55322] font-semibold text-lg">
+            <button className="flex items-center gap-3 lg:gap-4 text-[#E55322] font-semibold text-base lg:text-lg">
               Send
-              <span className="w-10 h-10 rounded-full border border-[#E55322] flex items-center justify-center">
+              <span className="w-9 h-9 lg:w-10 lg:h-10 rounded-full border border-[#E55322] flex items-center justify-center">
                 →
               </span>
             </button>
@@ -66,8 +74,10 @@ export default function SubmitEventSection() {
 
 function FormField({ label }: { label: string }) {
   return (
-    <div className="flex flex-col gap-3">
-      <label className="text-[#E55322] text-[16px] font-bold">{label}</label>
+    <div className="flex flex-col gap-2 lg:gap-3">
+      <label className="text-[#E55322] text-[14px] sm:text-[15px] lg:text-[16px] font-bold">
+        {label}
+      </label>
       <input
         type="text"
         className="bg-transparent border-b border-black/70 focus:outline-none focus:border-[#E55322] py-1"
@@ -78,8 +88,10 @@ function FormField({ label }: { label: string }) {
 
 function FormTextarea({ label, rows }: { label: string; rows: number }) {
   return (
-    <div className="flex flex-col gap-3">
-      <label className="text-[#E55322] text-[16px] font-bold">{label}</label>
+    <div className="flex flex-col gap-2 lg:gap-3">
+      <label className="text-[#E55322] text-[14px] sm:text-[15px] lg:text-[16px] font-bold">
+        {label}
+      </label>
       <textarea
         rows={rows}
         className="bg-transparent border-b border-black/70 focus:outline-none focus:border-[#E55322] resize-none"

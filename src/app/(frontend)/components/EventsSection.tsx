@@ -123,7 +123,7 @@ function SlideContent({ schedules, day, role, direction }: SlideContentProps) {
               alt={primary.title}
               className="w-full h-full object-cover object-center"
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/40 to-transparent" />
+            <div className="absolute inset-0 bg-linear-to-t from-black/85 via-black/40 to-transparent" />
             <div className="absolute bottom-3 left-3 sm:bottom-5 sm:left-5 md:bottom-6 md:left-6 lg:bottom-8 lg:left-8 text-white drop-shadow-[0_4px_12px_rgba(0,0,0,0.9)] space-y-0.5 sm:space-y-1 md:space-y-2 lg:space-y-3">
               <h3 className="text-xs sm:text-sm md:text-xl lg:text-4xl font-light leading-tight">
                 {primary.title}
@@ -137,7 +137,6 @@ function SlideContent({ schedules, day, role, direction }: SlideContentProps) {
             </div>
           </div>
 
-          {/* ── Side shows — right column ── */}
           <div className="relative w-1/3 lg:w-3/12 h-full flex flex-col">
             {rest.length === 0 ? (
               <div className="flex-1 flex items-center justify-center text-gray-400 text-[10px] sm:text-xs px-2 text-center">
@@ -151,7 +150,7 @@ function SlideContent({ schedules, day, role, direction }: SlideContentProps) {
                     alt={show.title}
                     className="w-full h-full object-cover object-top"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/40 to-transparent" />
+                  <div className="absolute inset-0 bg-linear-to-t from-black/85 via-black/40 to-transparent" />
                   <div className="absolute bottom-2 left-2 sm:bottom-3 sm:left-3 md:bottom-4 md:left-4 text-white drop-shadow-[0_3px_10px_rgba(0,0,0,0.9)] space-y-0.5 sm:space-y-1 md:space-y-1.5 lg:space-y-2">
                     <p className="text-[10px] sm:text-xs md:text-base lg:text-2xl opacity-90 font-bold">
                       {show.startTime} EST

@@ -41,8 +41,8 @@ export default function Banner({ title, headline, image, textColor }: BannerProp
     >
       <div className="absolute inset-0 -z-10">
         <Image
-          src={image.url}
-          alt={image.alt || 'Hero background'}
+          src={image?.url}
+          alt={image?.alt || 'Hero background'}
           fill
           priority
           className="object-cover object-top"

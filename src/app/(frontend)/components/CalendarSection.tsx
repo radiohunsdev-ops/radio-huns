@@ -31,15 +31,15 @@ export default function CalendarSection({ heading, body }: DescriptionSectionPro
   }
 
   return (
-    <div className="relative ">
-      <section className=" bg-[#F6F1E7] font-serif ">
-        <div className="grid grid-cols-[40%_60%] ">
-          <div>
-            <div className="bg-[#EADCC8] px-10 py-30 space-y-4">
-              <h1 className="text-[75px] text-[#E24C1A] max-w-lg font-serif font-extrabold leading-[1.05] tracking-wide">
+    <div className="relative">
+      <section className="bg-[#F6F1E7] font-serif">
+        <div className="flex flex-col lg:grid lg:grid-cols-[40%_60%]">
+          <div className="flex flex-col">
+            <div className="bg-[#EADCC8] px-6 py-10 sm:px-8 sm:py-16 lg:px-10 lg:py-30 space-y-4">
+              <h1 className="text-[42px] sm:text-[56px] lg:text-[75px] text-[#E24C1A] max-w-lg font-serif font-extrabold leading-[1.05] tracking-wide">
                 {formatHeading(heading)}
               </h1>
-              <p className="max-w-xl text-[#2E3A3A] text-lg leading-relaxed">
+              <p className="max-w-xl text-[#2E3A3A] text-base sm:text-lg leading-relaxed">
                 {body?.root?.children?.map((node, index) => {
                   if (node.type === 'paragraph') {
                     return (
@@ -50,8 +50,9 @@ export default function CalendarSection({ heading, body }: DescriptionSectionPro
                 })}
               </p>
             </div>
-            <div className="relative w-full h-[52vh]  bg-[#E24C1A] ] overflow-hidden">
-              <div className="section-calendar-filler ">
+
+            <div className="hidden lg:block relative w-full h-[55vh] bg-[#E24C1A] overflow-hidden">
+              <div className="section-calendar-filler">
                 <svg
                   version="1.1"
                   xmlns="http://www.w3.org/2000/svg"
@@ -71,15 +72,15 @@ export default function CalendarSection({ heading, body }: DescriptionSectionPro
               </div>
             </div>
           </div>
-          <div className="px-2 pt-10 flex flex-col">
+
+          <div className="px-2 pt-6 sm:pt-8 lg:pt-10 flex flex-col">
             <Calendar />
-            <div className="flex items-center justify-center gap-10 ">
-              <button className="w-12 h-12 rounded-full border border-[#E24C1A] flex items-center justify-center text-[#E24C1A]">
+            <div className="flex items-center justify-center gap-6 sm:gap-10 py-4">
+              <button className="w-10 h-10 sm:w-12 sm:h-12 rounded-full border border-[#E24C1A] flex items-center justify-center text-[#E24C1A]">
                 ←
               </button>
-              <span className="font-serif text-[#E24C1A] text-xl">January 2026</span>
-
-              <button className="w-12 h-12 rounded-full border border-[#E24C1A] flex items-center justify-center text-[#E24C1A]">
+              <span className="font-serif text-[#E24C1A] text-lg sm:text-xl">January 2026</span>
+              <button className="w-10 h-10 sm:w-12 sm:h-12 rounded-full border border-[#E24C1A] flex items-center justify-center text-[#E24C1A]">
                 →
               </button>
             </div>

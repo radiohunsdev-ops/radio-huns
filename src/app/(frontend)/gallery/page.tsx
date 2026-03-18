@@ -28,7 +28,7 @@ export default async function HomePage() {
                   headline={block.headline}
                   image={block.image}
                 />
-                <div className="absolute left-0 w-full -bottom-16 z-20">
+                <div className="absolute left-0 w-full lg-bottom-40 z-20">
                   <div className="max-w-8xl mx-auto  flex justify-end">
                     <ScheduleBox schedules={schedules} />
                   </div>

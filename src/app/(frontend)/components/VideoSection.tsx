@@ -45,8 +45,8 @@ export default function VideoSection({ videos }: VideoSectionProps) {
   const thumbnailSrc = video.thumbnail?.url || getYoutubeThumbnail(video.youtubeUrl)
 
   return (
-    <section className="relative min-h-screen bg-[#0055B8] overflow-hidden flex items-center justify-center">
-      <div className="absolute  inset-0 top-0  left-0">
+    <section className="relative h-auto md:min-h-screen bg-[#0055B8] overflow-hidden flex items-center justify-center py-10 sm:py-14 md:py-0">
+      <div className="absolute inset-0 top-0 left-0 hidden md:block">
         <svg
           version="1.1"
           xmlns="http://www.w3.org/2000/svg"
@@ -66,8 +66,20 @@ export default function VideoSection({ videos }: VideoSectionProps) {
         </svg>
       </div>
 
-      <div className="relative  w-[75%] max-w-6xl shadow-2xl">
-        <div className="relative aspect-video overflow-hidden">
+      <div className="absolute inset-0 md:hidden pointer-events-none">
+        <svg
+          viewBox="0 0 400 300"
+          xmlns="http://www.w3.org/2000/svg"
+          className="absolute -bottom-8 -right-8 w-64 h-64 opacity-20"
+          fill="#0071CE"
+        >
+          <circle cx="200" cy="200" r="180" />
+          <circle cx="200" cy="200" r="120" fill="none" stroke="#0071CE" strokeWidth="2" />
+        </svg>
+      </div>
+
+      <div className="relative w-[92%] sm:w-[85%] md:w-[75%] max-w-6xl shadow-2xl">
+        <div className="relative aspect-video overflow-hidden rounded-sm sm:rounded-none">
           {!isPlaying && (
             <>
               <img
@@ -79,9 +91,10 @@ export default function VideoSection({ videos }: VideoSectionProps) {
               <button
                 onClick={() => setIsPlaying(true)}
                 className="absolute inset-0 flex items-center justify-center"
+                aria-label="Play video"
               >
-                <span className="w-16 h-16 rounded-full border border-white flex items-center justify-center shadow-lg  text-xl">
-                  <Play className="text-white" />
+                <span className="w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 rounded-full border border-white flex items-center justify-center shadow-lg text-xl transition-transform duration-200 hover:scale-110 active:scale-95">
+                  <Play className="text-white w-5 h-5 sm:w-6 sm:h-6" />
                 </span>
               </button>
             </>
@@ -96,14 +109,17 @@ export default function VideoSection({ videos }: VideoSectionProps) {
             />
           )}
 
-          <div className="absolute bottom-8 left-8 text-white max-w-xl pointer-events-none">
-            <h1 className="text-3xl flex  space-x-5 font-serif leading-tight">
-              <Mic className="w-20 h-20 " strokeWidth={2} />
-              {video.title}
+          <div className="absolute bottom-0 left-0 right-0 sm:right-auto sm:bottom-8 sm:left-8 text-white max-w-xl pointer-events-none bg-linear-to-t from-black/60 via-black/20 to-transparent sm:bg-none p-4 sm:p-0">
+            <h1 className="text-lg sm:text-2xl md:text-3xl flex items-start sm:items-center space-x-2 sm:space-x-5 font-serif leading-tight">
+              <Mic
+                className="w-6 h-6 sm:w-10 sm:h-10 md:w-20 md:h-20 shrink-0 mt-0.5 sm:mt-0"
+                strokeWidth={2}
+              />
+              <span>{video.title}</span>
             </h1>
 
             {video.date && (
-              <p className="mt-2 text-sm opacity-80">
+              <p className="mt-1 sm:mt-2 text-xs sm:text-sm opacity-80 pl-8 sm:pl-0">
                 {new Date(video.date).toLocaleDateString('en-US', {
                   year: 'numeric',
                   month: 'long',

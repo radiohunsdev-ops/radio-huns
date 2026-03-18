@@ -75,15 +75,21 @@ export default function ScheduleBox({ schedules }: { schedules: Schedule[] }) {
         <div className={`${bgColor} w-full lg:w-200 text-white shadow-2xl`}>
           <div className="grid grid-cols-2">
             <div className="flex items-center gap-3 sm:gap-6 px-4 sm:px-6 lg:px-10 py-5 sm:py-7 lg:py-10 border-r border-white/40">
-              <div className="lg:hidden flex  shrink-0 w-8 h-8 sm:w-10 sm:h-10 lg:w-12 lg:h-12 rounded-full border-2 border-white/70  items-center justify-center">
-                <svg
-                  className="w-4 h-4 sm:w-5 sm:h-5 lg:w-6 lg:h-6"
-                  viewBox="0 0 24 24"
-                  fill="white"
-                >
-                  <polygon points="6,4 20,12 6,20" />
-                </svg>
-              </div>
+              <a
+                href="https://streema.com/radios/CHIN_Ottawa_CJLL"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <div className="lg:hidden flex  shrink-0 w-8 h-8 sm:w-10 sm:h-10 lg:w-12 lg:h-12 rounded-full border-2 border-white/70  items-center justify-center">
+                  <svg
+                    className="w-4 h-4 sm:w-5 sm:h-5 lg:w-6 lg:h-6"
+                    viewBox="0 0 24 24"
+                    fill="white"
+                  >
+                    <polygon points="6,4 20,12 6,20" />
+                  </svg>
+                </div>
+              </a>
 
               <div className="min-w-0">
                 <p className="text-[10px] sm:text-xs lg:text-sm tracking-widest uppercase opacity-80 mb-0.5">

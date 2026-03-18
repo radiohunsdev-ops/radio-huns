@@ -25,10 +25,14 @@ export default function SupportPromotionSection({ title, body, organizations }: 
   return (
     <section className="min-h-screen bg-[#F5F1E8] font-serif">
       <div className="grid min-h-screen grid-cols-1 lg:grid-cols-[50%_50%]">
+        {/* ── Left column ── */}
         <div className="relative flex flex-col justify-between">
-          <div className="max-w-4xl px-15 py-23 space-y-10">
-            <h1 className="font-extrabold text-[64px] leading-[1.05] text-[#E55322]">{title}</h1>
-            <div className="text-[#3B4A54] font-serif text-xl max-w-4xl  leading-relaxed space-y-6">
+          {/* Text content */}
+          <div className="max-w-4xl px-6 py-10 sm:px-10 sm:py-14 lg:px-15 lg:py-23 space-y-6 sm:space-y-8 lg:space-y-10">
+            <h1 className="font-extrabold text-[40px] sm:text-[52px] lg:text-[64px] leading-[1.05] text-[#E55322]">
+              {title}
+            </h1>
+            <div className="text-[#3B4A54] font-serif text-base sm:text-lg lg:text-xl max-w-4xl leading-relaxed space-y-6">
               {body?.root?.children?.map((node, pIndex) => {
                 if (node.type !== 'paragraph') return null
                 const fullText = (node.children ?? [])
@@ -76,7 +80,8 @@ export default function SupportPromotionSection({ title, body, organizations }: 
             </div>
           </div>
 
-          <div className="relative h-[35vh] bg-[#E75023] overflow-hidden">
+          {/* Orange SVG strip — hidden on mobile, visible md+ */}
+          <div className="relative hidden md:block h-[35vh] bg-[#E75023] overflow-hidden">
             <div className="section-half-social-fill">
               <svg
                 version="1.1"
@@ -99,14 +104,20 @@ export default function SupportPromotionSection({ title, body, organizations }: 
           </div>
         </div>
 
-        <div className="flex flex-col items-center justify-center bg-[#EFE2CF] px-10 py-20">
-          <div className="flex flex-col items-center gap-20">
+        {/* ── Right column — organizations ── */}
+        {/*
+          On mobile/tablet: stacks below the left column, uses a horizontal
+          wrapping row of logos. On lg+: original side-by-side flex column.
+        */}
+        <div className="flex flex-col items-center justify-center bg-[#EFE2CF] px-6 py-10 sm:px-10 sm:py-14 lg:px-10 lg:py-20">
+          {/* Mobile/tablet: wrap logos in a row; lg: keep original column */}
+          <div className="flex flex-wrap justify-center gap-10 lg:flex-col lg:items-center lg:gap-20">
             {organizations?.map((org, index) => (
               <div key={index} className="flex flex-col items-center gap-4">
                 <img
                   src={org.logo?.url}
                   alt={org.logo?.alt || org.name}
-                  className="h-20 object-contain"
+                  className="h-14 sm:h-16 lg:h-20 object-contain"
                 />
               </div>
             ))}

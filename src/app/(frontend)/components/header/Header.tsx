@@ -57,12 +57,13 @@ const Header = () => {
       }),
     [pathname, scrolled],
   )
+  const isAbout = pathname === '/about-us'
 
   return (
     <header
       className={`fixed top-0 left-0 w-full z-50 transition-transform duration-500 ${
         showHeader ? 'translate-y-0' : '-translate-y-full'
-      } ${scrolled ? 'bg-[#E75023]' : 'bg-transparent'} `}
+      } ${scrolled ? (isAbout ? 'bg-blue-600' : 'bg-[#E75023]') : 'bg-transparent'}`}
     >
       <div className="relative max-w-8xl container px-6 lg:px-15 mx-auto py-4 flex items-center justify-between text-white">
         <HeaderLogo />

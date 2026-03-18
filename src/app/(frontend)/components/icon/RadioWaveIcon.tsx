@@ -1,4 +1,4 @@
-import React from "react"
+import React from 'react'
 
 type Props = {
   className?: string
@@ -9,9 +9,9 @@ type Props = {
 
 export default function RadioWaveIcon({
   className,
-  fill = "#F9B855",
-  width = "100%",
-  height = "100%",
+  fill = '#F9B855',
+  width = '100%',
+  height = '100%',
 }: Props) {
   return (
     <svg

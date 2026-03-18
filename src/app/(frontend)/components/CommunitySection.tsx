@@ -43,8 +43,8 @@ export default function CommunitySection({
   }
 
   return (
-    <section className="relative w-full overflow-hidden bg-[#F9B855]">
-      <div className="grid grid-cols-1 lg:grid-cols-[40%_60%] min-h-auto">
+    <section className="relative  w-full overflow-hidden bg-[#F9B855]">
+      <div className="grid grid-cols-1  lg:grid-cols-[40%_60%] min-h-auto">
         <div
           className={`hidden lg:block relative h-screen ${
             imagePosition === 'right' ? 'lg:order-2' : 'lg:order-1'
