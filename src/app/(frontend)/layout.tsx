@@ -16,7 +16,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <NextTopLoader color="#E75023" />
         <main>
           <Header />
-          <div className="">{children}</div>
+          {children}
         </main>
       </body>
     </html>

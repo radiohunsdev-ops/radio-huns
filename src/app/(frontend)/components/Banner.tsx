@@ -1,5 +1,8 @@
+'use client'
+
 import Image from 'next/image'
-import { useMemo } from 'react'
+import { useMemo, useState } from 'react'
+import { usePathname } from 'next/navigation'
 
 type BannerProps = {
   title: string
@@ -29,30 +32,56 @@ const highlightText = (text: string) => {
 
 export default function Banner({ title, headline, image, textColor }: BannerProps) {
   const formattedHeadline = useMemo(() => highlightText(headline), [headline])
+  const [imageLoaded, setImageLoaded] = useState(false)
+  const pathname = usePathname()
+
+  const fallbackBgColor = pathname === '/about-us' ? '#155DFC' : '#F9B855'
 
   return (
     <section
       className="
-    relative w-full overflow-hidden
-    min-h-[60vh] sm:min-h-[65vh] md:min-h-[75vh]
-    lg:min-h-[90vh] xl:min-h-screen
-    flex items-center
-  "
+        relative w-full overflow-hidden
+        min-h-[60vh] sm:min-h-[65vh] md:min-h-[75vh]
+        lg:min-h-[90vh] xl:min-h-screen
+        flex items-center
+      "
     >
-      <div className="absolute inset-0 -z-10">
+      <div
+        style={{ backgroundColor: fallbackBgColor }}
+        className={`
+          absolute inset-0 z-0
+          transition-opacity duration-700
+          ${imageLoaded ? 'opacity-0' : 'opacity-100'}
+        `}
+      />
+
+      <div className="absolute inset-0 z-10">
         <Image
           src={image?.url}
           alt={image?.alt || 'Hero background'}
           fill
           priority
-          className="object-cover object-top"
+          className={`
+            object-cover object-top
+            transition-opacity duration-700
+            ${imageLoaded ? 'opacity-100' : 'opacity-0'}
+          `}
+          onLoad={() => setImageLoaded(true)}
         />
-        <div className="absolute inset-0 bg-linear-to-r from-black/50 via-black/30 to-transparent" />
       </div>
 
       <div
+        className={`
+          absolute inset-0 z-20
+          bg-linear-to-r from-black/50 via-black/30 to-transparent
+          transition-opacity duration-700
+          ${imageLoaded ? 'opacity-100' : 'opacity-0'}
+        `}
+      />
+
+      <div
         className="
-          relative z-10 h-full flex items-center
+          relative z-30 h-full flex items-center
           container mx-auto
           px-5 sm:px-8 md:px-12 lg:px-16 xl:px-18
           py-12 sm:py-16 md:py-20 lg:py-24
