@@ -1,6 +1,6 @@
 export default function HeaderLogo() {
   return (
-    <a className="shrink-0 block w-[7vw] top-[3vw] left-[3vw]">
+    <a className="shrink-0 block w-[16vw] sm:w-[7vw] top-[3vw] left-[3vw]">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1158.23 1037.37">
         <path
           fill="#F9B855"

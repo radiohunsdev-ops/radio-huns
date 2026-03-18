@@ -43,10 +43,8 @@ export default function EventsSection({
 
     setSlides((prev) => {
       const active = prev.find((s) => s.role === 'current' || s.role === 'incoming')
-
       if (active?.day === selectedDay) return prev
       if (!active) return prev
-
       return [
         { ...active, role: 'outgoing', direction },
         { day: selectedDay, key: newKey, role: 'incoming', direction },
@@ -98,64 +96,72 @@ function SlideContent({ schedules, day, role, direction }: SlideContentProps) {
 
   const animationClass = (() => {
     if (role === 'current') return 'relative translate-x-0'
-
-    if (role === 'outgoing') {
+    if (role === 'outgoing')
       return direction === 'right'
         ? 'absolute inset-0 animate-slide-out-left'
         : 'absolute inset-0 animate-slide-out-right'
-    }
-
-    if (role === 'incoming') {
+    if (role === 'incoming')
       return direction === 'right'
         ? 'relative animate-slide-in-right'
         : 'relative animate-slide-in-left'
-    }
-
     return ''
   })()
 
   return (
     <section className={`w-full font-serif ${animationClass}`}>
       {!primary ? (
-        <div className="flex items-center justify-center h-[80vh] text-2xl text-gray-400">
+        <div className="flex items-center justify-center h-[50vh] text-lg text-gray-400">
           No shows scheduled for this day
         </div>
       ) : (
-        <div className="grid grid-cols-1 lg:grid-cols-12">
-          <div className="relative lg:col-span-9 h-[80vh] overflow-hidden">
+        /* Always side-by-side: primary left (2/3), side cards right (1/3) */
+        <div className="flex h-[55vw] sm:h-[45vw] md:h-[40vw] lg:h-[80vh]">
+          {/* ── Primary show — left column ── */}
+          <div className="relative w-2/3 lg:w-9/12 h-full overflow-hidden">
             <img
               src={getImageUrl(primary.image as string | Media) ?? '/events/eve1.png'}
               alt={primary.title}
-              className="w-full h-full object-cover object-bottom"
+              className="w-full h-full object-cover object-center"
             />
-            <div className="absolute inset-0 bg-linear-to-t from-black/85 via-black/55 to-transparent" />
-            <div className="absolute space-y-3 bottom-8 left-8 text-white drop-shadow-[0_4px_12px_rgba(0,0,0,0.9)]">
-              <h3 className="text-4xl font-light">{primary.title}</h3>
-              <p className="text-5xl opacity-90">{primary.dj}</p>
-              <p className="text-2xl">
+            <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/40 to-transparent" />
+            <div className="absolute bottom-3 left-3 sm:bottom-5 sm:left-5 md:bottom-6 md:left-6 lg:bottom-8 lg:left-8 text-white drop-shadow-[0_4px_12px_rgba(0,0,0,0.9)] space-y-0.5 sm:space-y-1 md:space-y-2 lg:space-y-3">
+              <h3 className="text-xs sm:text-sm md:text-xl lg:text-4xl font-light leading-tight">
+                {primary.title}
+              </h3>
+              <p className="text-sm sm:text-base md:text-2xl lg:text-5xl opacity-90 leading-tight">
+                {primary.dj}
+              </p>
+              <p className="text-[10px] sm:text-xs md:text-base lg:text-2xl opacity-80">
                 {primary.startTime} – {primary.endTime} EST
               </p>
             </div>
           </div>
 
-          <div className="lg:col-span-3 flex flex-col">
+          {/* ── Side shows — right column ── */}
+          <div className="relative w-1/3 lg:w-3/12 h-full flex flex-col">
             {rest.length === 0 ? (
-              <div className="flex-1 flex items-center justify-center text-gray-400 text-lg px-4 text-center">
-                No other shows this day
+              <div className="flex-1 flex items-center justify-center text-gray-400 text-[10px] sm:text-xs px-2 text-center">
+                No other shows
               </div>
             ) : (
               rest.slice(0, 2).map((show) => (
-                <div key={show.id} className="relative overflow-hidden h-[40vh]">
+                <div key={show.id} className="relative overflow-hidden flex-1">
                   <img
                     src={getImageUrl(show.image as string | Media) ?? '/events/events2.jpg'}
                     alt={show.title}
                     className="w-full h-full object-cover object-top"
                   />
-                  <div className="absolute inset-0 bg-linear-to-t from-black/85 via-black/55 to-transparent" />
-                  <div className="absolute space-y-2 bottom-4 left-4 text-white drop-shadow-[0_3px_10px_rgba(0,0,0,0.9)]">
-                    <p className="text-2xl opacity-90">{show.startTime} EST</p>
-                    <h4 className="text-4xl ">{show.title}</h4>
-                    <p className="text-xl opacity-80">{show.dj}</p>
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/40 to-transparent" />
+                  <div className="absolute bottom-2 left-2 sm:bottom-3 sm:left-3 md:bottom-4 md:left-4 text-white drop-shadow-[0_3px_10px_rgba(0,0,0,0.9)] space-y-0.5 sm:space-y-1 md:space-y-1.5 lg:space-y-2">
+                    <p className="text-[10px] sm:text-xs md:text-base lg:text-2xl opacity-90 font-bold">
+                      {show.startTime} EST
+                    </p>
+                    <h4 className="text-[10px] sm:text-xs md:text-lg lg:text-4xl leading-tight">
+                      {show.title}
+                    </h4>
+                    <p className="text-[9px] sm:text-[11px] md:text-sm lg:text-xl opacity-80">
+                      {show.dj}
+                    </p>
                   </div>
                 </div>
               ))
