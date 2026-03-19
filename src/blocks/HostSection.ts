@@ -15,6 +15,13 @@ export const HostSection: Block = {
       label: 'Section Image',
     },
     {
+      name: 'slug',
+      type: 'text',
+      required: true,
+      unique: true,
+      label: 'Slug',
+    },
+    {
       name: 'imagePosition',
       type: 'select',
       defaultValue: 'right',

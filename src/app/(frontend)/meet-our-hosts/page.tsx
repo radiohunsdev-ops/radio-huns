@@ -37,8 +37,9 @@ export default async function HomePage() {
             return (
               <HostSection
                 key={block.id}
-                body={block.body}
+                slug={block.slug}
                 heading={block.heading}
+                body={block.body}
                 image={block.image}
                 imagePosition={block.imagePosition}
               />

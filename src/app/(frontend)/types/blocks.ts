@@ -171,6 +171,7 @@ export type HostSectionBlock = {
   id: string
   blockType: 'host-section'
   heading: string
+  slug: string
   body: RichText
   image: {
     url: string

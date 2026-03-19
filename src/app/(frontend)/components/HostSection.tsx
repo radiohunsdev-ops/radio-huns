@@ -4,6 +4,7 @@ import { ArrowRight } from 'lucide-react'
 type CommunitySectionProps = {
   heading: string
   imagePosition?: 'left' | 'right'
+  slug: string
   body: {
     root: {
       children: {
@@ -25,6 +26,7 @@ export default function HostSection({
   body,
   image,
   imagePosition = 'left',
+  slug,
 }: CommunitySectionProps) {
   const formatHeading = (text: string) => {
     const parts = text.split(/(\*.*?\*)/g)

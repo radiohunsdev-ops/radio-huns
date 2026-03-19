@@ -456,6 +456,7 @@ export interface Page {
           }
         | {
             image?: (string | null) | Media;
+            slug: string;
             /**
              * Choose whether image appears left or right
              */
@@ -919,6 +920,7 @@ export interface PagesSelect<T extends boolean = true> {
           | T
           | {
               image?: T;
+              slug?: T;
               imagePosition?: T;
               heading?: T;
               body?: T;

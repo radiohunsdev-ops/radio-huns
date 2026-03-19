@@ -10,6 +10,7 @@ import { Menu, X } from 'lucide-react'
 
 const Header = () => {
   const pathname = usePathname()
+
   const [showHeader, setShowHeader] = useState(true)
   const [lastScrollY, setLastScrollY] = useState(0)
   const [drawerOpen, setDrawerOpen] = useState(false)
@@ -35,13 +36,14 @@ const Header = () => {
     (className: string, onClick?: () => void) =>
       navLinks.map((item) => {
         const isActive = pathname === item.href || pathname.startsWith(item.href + '/')
+
         return (
           <Link
             key={item.label}
             href={item.href}
             onClick={onClick}
             className={`${className} ${
-              isActive ? 'text-[#F9B855]' : scrolled ? 'text-white' : 'text-white'
+              isActive ? 'text-[#F9B855]' : 'text-white'
             } hover:text-[#F9B855] relative`}
           >
             {item.label}
@@ -55,49 +57,81 @@ const Header = () => {
           </Link>
         )
       }),
-    [pathname, scrolled],
+    [pathname],
   )
+
+  const currentNav = navLinks.find(
+    (item) => pathname === item.href || pathname.startsWith(item.href + '/'),
+  )
+
+  const showSubMenu = currentNav?.subMenu
   const isAbout = pathname === '/about-us'
 
   return (
-    <header
-      className={`fixed top-0 left-0 w-full z-50 transition-transform duration-500 ${
-        showHeader ? 'translate-y-0' : '-translate-y-full'
-      } ${scrolled ? (isAbout ? 'bg-blue-600' : 'bg-[#E75023]') : 'bg-transparent'}`}
-    >
-      <div className="relative max-w-8xl container px-6 lg:px-15 mx-auto py-4 flex items-center justify-between text-white">
-        <HeaderLogo />
-
-        <nav className="hidden lg:flex items-center gap-4 font-serif text-md">
-          {renderNavLinks('relative group transition-colors duration-300')}
-        </nav>
-
-        <ListenNow />
-
-        <div className="md:flex lg:hidden items-center">
-          <button onClick={() => setDrawerOpen(true)}>
-            <Menu size={24} />
-          </button>
-        </div>
-      </div>
-
-      <div
-        className={`fixed inset-0 z-40 transition-transform duration-300 ${
-          drawerOpen ? 'translate-x-0' : 'translate-x-full'
-        }`}
+    <>
+      <header
+        className={`fixed top-0 left-0 w-full z-50 transition-transform duration-500 ${
+          showHeader ? 'translate-y-0' : '-translate-y-full'
+        } ${scrolled ? (isAbout ? 'bg-blue-600' : 'bg-amber-700') : 'bg-transparent'}`}
       >
-        <div className="absolute inset-0" onClick={() => setDrawerOpen(false)} />
+        <div className="relative max-w-8xl container px-6 lg:px-15 mx-auto py-4 flex items-center justify-between text-white">
+          <HeaderLogo />
+          <nav className="hidden py-6 lg:flex  items-center gap-4 font-serif text-md">
+            <div className="flex flex-col gap-5 py-5">
+              <div className="flex gap-4">
+                {renderNavLinks('relative group  transition-colors duration-300')}
+              </div>
+              {showSubMenu && (
+                <div className="font-serif flex  items-center justify-center  text-white">
+                  <div className=" gap-5 flex  ">
+                    {showSubMenu.map((item) => {
+                      const isActive = pathname === item.href
+                      return (
+                        <Link
+                          key={item.label}
+                          href={item.href}
+                          className={`text-sm font-medium transition-colors ${
+                            isActive ? 'text-yellow-300' : 'text-white'
+                          } hover:text-yellow-300`}
+                          onClick={() => setDrawerOpen(false)}
+                        >
+                          {item.label}
+                        </Link>
+                      )
+                    })}
+                  </div>
+                </div>
+              )}
+            </div>
+          </nav>
+          <ListenNow />
 
-        <div className="fixed top-0 right-0 h-screen w-3/4 md:w-1/2 bg-orange-400/50 backdrop-blur-md shadow-lg flex flex-col p-6 gap-6">
-          <button className="self-end" onClick={() => setDrawerOpen(false)}>
-            <X size={24} />
-          </button>
-          {renderNavLinks('font-serif text-lg transition-colors duration-300', () =>
-            setDrawerOpen(false),
-          )}
+          <div className="md:flex lg:hidden items-center">
+            <button onClick={() => setDrawerOpen(true)}>
+              <Menu size={24} />
+            </button>
+          </div>
         </div>
-      </div>
-    </header>
+
+        <div
+          className={`fixed inset-0 z-40 transition-transform duration-300 ${
+            drawerOpen ? 'translate-x-0' : 'translate-x-full'
+          }`}
+        >
+          <div className="absolute inset-0" onClick={() => setDrawerOpen(false)} />
+
+          <div className="fixed top-0 right-0 h-screen w-3/4 md:w-1/2 bg-orange-400/50 backdrop-blur-md shadow-lg flex flex-col p-6 gap-6">
+            <button className="self-end" onClick={() => setDrawerOpen(false)}>
+              <X size={24} />
+            </button>
+
+            {renderNavLinks('font-serif text-lg transition-colors duration-300', () =>
+              setDrawerOpen(false),
+            )}
+          </div>
+        </div>
+      </header>
+    </>
   )
 }
 
