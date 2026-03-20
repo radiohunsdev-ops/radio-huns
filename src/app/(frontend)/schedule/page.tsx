@@ -29,7 +29,7 @@ export default async function Advertise() {
             return (
               <div key={block.id}>
                 <Banner
-                  textColor="#F9B855"
+                  textColor=""
                   title={block.title}
                   headline={block.headline}
                   image={block.image}
