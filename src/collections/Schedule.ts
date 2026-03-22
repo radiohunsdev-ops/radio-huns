@@ -12,6 +12,18 @@ export const Schedule: CollectionConfig = {
       type: 'text',
       required: true,
     },
+
+    // ✅ SLUG FIELD ADDED
+    {
+      name: 'slug',
+      type: 'text',
+      required: true,
+      unique: true,
+      admin: {
+        position: 'sidebar',
+      },
+    },
+
     {
       name: 'shortDescription',
       type: 'text',

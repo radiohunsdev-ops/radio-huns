@@ -574,6 +574,7 @@ export interface Job {
 export interface Schedule {
   id: string;
   title: string;
+  slug: string;
   shortDescription: string;
   dj: string;
   image: string | Media;
@@ -986,6 +987,7 @@ export interface PagesSelect<T extends boolean = true> {
  */
 export interface ScheduleSelect<T extends boolean = true> {
   title?: T;
+  slug?: T;
   shortDescription?: T;
   dj?: T;
   image?: T;

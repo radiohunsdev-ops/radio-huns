@@ -101,7 +101,7 @@ const Header = () => {
         </div>
 
         {showSubMenu && (
-          <div className="py-8 pb-10">
+          <div className="py-8 pb-10 ">
             <div className="flex justify-center px-6 lg:px-12">
               <div className="flex flex-wrap pb-5 justify-center gap-1 max-w-5xl">
                 {showSubMenu.map((item) => {
@@ -112,8 +112,8 @@ const Header = () => {
                       href={item.href}
                       className={`relative shrink-0 px-3 py-1 rounded-md text-sm font-serif tracking-wide transition-all duration-200 ${
                         isActive
-                          ? 'text-[#F9B855] hover:bg-white/20'
-                          : 'text-white hover:text-[#F9B855] bg-white/20 '
+                          ? 'text-[#F9B855]  shadow-md border border-white/20 hover:bg-white/20'
+                          : 'text-white shadow-2xl hover:shadow-md  hover:text-[#F9B855] bg-white/20 '
                       }`}
                     >
                       {item.label}
