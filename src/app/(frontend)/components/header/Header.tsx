@@ -101,7 +101,7 @@ const Header = () => {
         </div>
 
         {showSubMenu && (
-          <div className="py-8 pb-10 ">
+          <div className="py-8 pb-10 hidden lg:block">
             <div className="flex justify-center px-6 lg:px-12">
               <div className="flex flex-wrap pb-5 justify-center gap-1 max-w-5xl">
                 {showSubMenu.map((item) => {
