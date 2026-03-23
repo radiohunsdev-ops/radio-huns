@@ -12,6 +12,12 @@ export const metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en">
+      <head>
+        <meta
+          name="google-site-verification"
+          content="Jsa3bcdEqflgLtVc2fFWUSoQ3g8w8gwiSiggs8uERY8"
+        />
+      </head>
       <body suppressHydrationWarning>
         <NextTopLoader color="#E75023" />
         <main>

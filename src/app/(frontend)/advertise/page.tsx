@@ -18,7 +18,6 @@ export default async function Advertise() {
   const page = (await getPageBySlug('advertise')) as Page | null
   const schedules = await getActiveSchedule()
   if (!page) return <div>not found</div>
-
   return (
     <main>
       {page.layout?.map((block) => {
