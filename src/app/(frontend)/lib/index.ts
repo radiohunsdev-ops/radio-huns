@@ -26,12 +26,10 @@ export const navLinks = [
     label: 'Meet Our Hosts',
     href: '/meet-our-hosts',
     subMenu: [
-      { label: 'RJ Devang', href: '/meet-our-hosts/rj-devang' },
+      { label: 'RJ Dipam', href: '/meet-our-hosts/rj-dipam' },
       { label: 'Tanzila Anis', href: '/meet-our-hosts/tanzila-anis' },
-      // { label: 'Rj Manali', href: '/meet-our-hosts/rj-manali' },
       { label: 'Iqbal Atwal', href: '/meet-our-hosts/iqbal-atwal' },
       { label: 'Nasreen Shoshi', href: '/meet-our-hosts/nasreen-shoshi' },
-      // { label: 'Praveen Lata', href: '/meet-our-hosts/praveen-lata' },
       { label: 'Meenal', href: '/meet-our-hosts/meenal' },
       { label: 'Vandana Kurichh', href: '/meet-our-hosts/vandana-kurichh' },
       { label: 'Rj Glen', href: '/meet-our-hosts/rj-glen' },
