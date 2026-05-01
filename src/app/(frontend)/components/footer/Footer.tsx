@@ -171,38 +171,37 @@ const Footer = () => {
                   items={[
                     { label: 'Home', href: '/' },
                     { label: 'Journal', href: '/journal' },
-                    { label: 'Contact', href: '/contact' },
                   ]}
                 />
                 <FooterCol
                   items={[
                     { label: 'About Us', href: '/about-us' },
-                    { label: 'Meet Our Hosts', href: '/hosts' },
+                    { label: 'Meet Our Hosts', href: '/meet-our-hosts' },
                   ]}
                 />
                 <FooterCol
                   items={[
                     { label: 'Community', href: '/community' },
-                    { label: 'Prizes', href: '/prizes' },
-                  ]}
-                />
-                <FooterCol
-                  items={[
+                    // { label: 'Prizes', href: '/prizes' },
                     { label: 'Advertise', href: '/advertise' },
-                    { label: 'Charter', href: '/charter' },
                   ]}
                 />
                 <FooterCol
                   items={[
+                    { label: 'Charter', href: '/charter' },
                     { label: 'Schedule', href: '/schedule' },
+                  ]}
+                />
+                <FooterCol
+                  items={[
                     { label: 'Jobs', href: '/jobs' },
+                    { label: 'Contact', href: '/contact' },
                   ]}
                 />
               </div>
 
               <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 text-xs md:text-sm">
                 <div className="flex flex-wrap gap-4 md:gap-6 text-[#F9B855]">
-                 
                   <span>Branding by Fable&Co.</span>
                 </div>
 

@@ -42,7 +42,7 @@ export default function MediaSection({ interviews }: MediaSectionProps) {
 
               {item.audio && (
                 <audio controls className="w-full sm:flex-1 mt-2 sm:mt-0">
-                  <source src={item.audio.url} />
+                  <source src="/audio.mp3" />
                 </audio>
               )}
             </div>
