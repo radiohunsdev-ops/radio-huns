@@ -1,5 +1,4 @@
 import { getPayloadClient } from '@/lib/payloadClient'
-
 export async function getActiveSchedule() {
   const payload = await getPayloadClient()
 
@@ -13,7 +12,7 @@ export async function getActiveSchedule() {
     limit: 100,
   })
 
-  return data.docs
+  return data.docs.reverse()
 }
 export async function getScheduleBySlug(slug: string) {
   const payload = await getPayloadClient()

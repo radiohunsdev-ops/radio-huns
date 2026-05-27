@@ -100,6 +100,7 @@ export default function ScheduleBox({ schedules }: { schedules: Schedule[] }) {
                   {upcoming.show.title}
                 </h4>
 
+
                 <div className="flex items-center gap-1 mt-1 text-[10px] sm:text-xs lg:text-sm opacity-90">
                   <svg
                     className="w-3 h-3 sm:w-3.5 sm:h-3.5 shrink-0"

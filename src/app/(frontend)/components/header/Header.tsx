@@ -79,7 +79,7 @@ const Header = () => {
           showHeader ? 'translate-y-0' : '-translate-y-full'
         } ${bgClass}`}
       >
-        <div className="max-w-8xl container px-6 pt-20 pb-14  lg:pb-12 lg:px-12 mx-auto flex items-center justify-between text-white h-16">
+        <div className="max-w-8xl container px-6 pt-20 pb-14  lg:pb-14 lg:px-12 mx-auto flex items-center justify-between text-white h-16">
           <HeaderLogo />
 
           <nav className="hidden lg:flex items-center gap-6 font-serif text-sm">
@@ -101,7 +101,7 @@ const Header = () => {
         </div>
 
         {showSubMenu && (
-          <div className="py-8 pb-10 hidden lg:block">
+          <div className="py-8  hidden lg:block">
             <div className="flex justify-center px-6 lg:px-12 relative bottom-10">
               <div className="flex flex-wrap pb-5 justify-center gap-1 max-w-5xl">
                 {showSubMenu.map((item) => {
