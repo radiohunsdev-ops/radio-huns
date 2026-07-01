@@ -5,25 +5,43 @@ import HeaderLogo from './HeaderLogo'
 import Link from 'next/link'
 import { navLinks } from '../../lib'
 import ListenNow from './ListenNow'
-import { useEffect, useState, useCallback } from 'react'
+import { useEffect, useState, useCallback, useRef } from 'react'
 import { Menu, X } from 'lucide-react'
+
+const SCROLL_THRESHOLD = 8 
 
 const Header = () => {
   const pathname = usePathname()
   const [showHeader, setShowHeader] = useState(true)
-  const [lastScrollY, setLastScrollY] = useState(0)
-  const [drawerOpen, setDrawerOpen] = useState(false)
   const [scrolled, setScrolled] = useState(false)
+  const [drawerOpen, setDrawerOpen] = useState(false)
+  const lastScrollY = useRef(0)
+  const ticking = useRef(false)
 
   const handleScroll = useCallback(() => {
-    const currentScrollY = window.scrollY
-    setShowHeader(currentScrollY <= lastScrollY || currentScrollY <= 80)
-    setLastScrollY(currentScrollY)
-    setScrolled(currentScrollY > 80)
-  }, [lastScrollY])
+    if (ticking.current) return
+    ticking.current = true
+
+    requestAnimationFrame(() => {
+      const currentScrollY = window.scrollY
+      const delta = currentScrollY - lastScrollY.current
+
+      setScrolled(currentScrollY > 80)
+
+      if (currentScrollY <= 80) {
+        setShowHeader(true)
+        lastScrollY.current = currentScrollY
+      } else if (Math.abs(delta) > SCROLL_THRESHOLD) {
+        setShowHeader(delta < 0) // delta < 0 => scrolling up
+        lastScrollY.current = currentScrollY
+      }
+
+      ticking.current = false
+    })
+  }, [])
 
   useEffect(() => {
-    window.addEventListener('scroll', handleScroll)
+    window.addEventListener('scroll', handleScroll, { passive: true })
     return () => window.removeEventListener('scroll', handleScroll)
   }, [handleScroll])
 

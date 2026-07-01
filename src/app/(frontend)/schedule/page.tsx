@@ -10,6 +10,7 @@ import ScheduleSection from '../components/ScheduleSection'
 import QuoteSection from '../components/QouteSection'
 import Halvesection from '../components/Halvesection'
 import Footer from '../components/footer/Footer'
+import WeeklySchedule from '../components/WeeklySchedule'
 
 type Page = {
   title: string
@@ -20,7 +21,6 @@ export default async function Advertise() {
   const page = (await getPageBySlug('schedule')) as Page | null
   const schedules = await getActiveSchedule()
   if (!page) return <div>not found</div>
-
   return (
     <main>
       {page.layout?.map((block) => {
@@ -37,8 +37,17 @@ export default async function Advertise() {
                 <ScheduleBox schedules={schedules} />
               </div>
             )
-          case 'contentSection':
-            return <DescriptionSection key={block.id} heading={block.heading} body={block.body} />
+       case "contentSection":
+       return (
+        <>
+         <DescriptionSection
+            key={block.id}
+            heading={block.heading}
+            body={block.body}
+         />
+      <WeeklySchedule schedules={schedules} />
+    </>
+  );
           case 'scheduleSection':
             return <ScheduleSection key={block.id} schedules={schedules} />
           case 'community-section':
