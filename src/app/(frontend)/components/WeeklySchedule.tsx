@@ -1,6 +1,6 @@
 "use client"
 
-import { useState, useEffect, useMemo } from "react";
+import { useState, useEffect, useMemo, useRef } from "react";
 import { Mic2, X, Clock, CalendarDays } from "lucide-react";
 
 // All shows are currently Music, so category styling/legend has been
@@ -20,8 +20,6 @@ type ApiSchedule = {
   title: string;
   shortDescription?: string | null;
   dj: string;
-  // Not used by this component — accept whatever shape the CMS returns
-  // (string path, populated Media object, etc.) instead of constraining it.
   image?: unknown;
   day: string; // e.g. "saturday" (lowercase)
   startTime: string; // e.g. "15.00 " (dot-separated, may have trailing space)
@@ -93,7 +91,6 @@ function EqBars({ animate = true, className = "" }: { animate?: boolean; classNa
 
 // ---- Detail modal ----
 function ShowModal({ show, isLive, onClose }: { show: Show; isLive: boolean; onClose: () => void }) {
-  // Close on Escape
   useEffect(() => {
     const handler = (e: KeyboardEvent) => {
       if (e.key === "Escape") onClose();
@@ -211,10 +208,32 @@ export default function WeeklySchedule({ schedules = [] as ApiSchedule[] }: { sc
   const [now, setNow] = useState({ day: getCurrentDay(), time: getCurrentTime() });
   const [selectedShow, setSelectedShow] = useState<Show | null>(null);
   const [selectedDay, setSelectedDay] = useState(getCurrentDay());
+  const rootRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const id = setInterval(() => setNow({ day: getCurrentDay(), time: getCurrentTime() }), 30000);
     return () => clearInterval(id);
+  }, []);
+
+  // ---- Scroll this section into view when arriving via #weekly-schedule ----
+  useEffect(() => {
+    if (typeof window === "undefined") return;
+
+    const scrollIfHashMatches = () => {
+      if (window.location.hash === "#weekly-schedule" && rootRef.current) {
+        requestAnimationFrame(() => {
+          rootRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });
+        });
+      }
+    };
+
+    // Handles: full page load at /schedules#weekly-schedule
+    scrollIfHashMatches();
+
+    // Handles: client-side navigation where the hash changes but the page
+    // (and this component) is already mounted
+    window.addEventListener("hashchange", scrollIfHashMatches);
+    return () => window.removeEventListener("hashchange", scrollIfHashMatches);
   }, []);
 
   const shows = useMemo(() => {
@@ -234,7 +253,6 @@ export default function WeeklySchedule({ schedules = [] as ApiSchedule[] }: { sc
     return map;
   }, [shows]);
 
-  // Shows for the mobile per-day list, sorted chronologically.
   const dayShows = useMemo(() => {
     return shows
       .filter((s) => s.day === selectedDay)
@@ -248,7 +266,11 @@ export default function WeeklySchedule({ schedules = [] as ApiSchedule[] }: { sc
     now.time < selectedShow.end;
 
   return (
-    <div className="radio-schedule min-h-screen w-full bg-[#150502] p-4 font-body text-white sm:p-6 lg:p-8">
+    <div
+      id="weekly-schedule"
+      ref={rootRef}
+      className="radio-schedule min-h-screen w-full scroll-mt-20 bg-[#150502] p-4 font-body text-white sm:p-6 lg:p-8"
+    >
       <style jsx global>{`
         @import url("https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500&family=JetBrains+Mono:wght@400;500&display=swap");
 

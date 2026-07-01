@@ -1,7 +1,7 @@
 'use client'
 
 import { useMemo } from 'react'
-import { usePathname } from 'next/navigation'
+import { usePathname, useRouter } from 'next/navigation'
 import type { Schedule } from '@/payload-types'
 
 const DAYS = ['sunday', 'monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday']
@@ -19,6 +19,7 @@ const capitalize = (day: string) => day.charAt(0).toUpperCase() + day.slice(1)
 
 export default function ScheduleBox({ schedules }: { schedules: Schedule[] }) {
   const pathname = usePathname()
+  const router = useRouter()
 
   const bgColor = pathname === '/about-us' ? 'bg-blue-600' : 'bg-[#E75023]'
 
@@ -69,18 +70,23 @@ export default function ScheduleBox({ schedules }: { schedules: Schedule[] }) {
 
   if (!upcoming) return null
 
+  const goToWeeklySchedule = () => {
+    router.push('/schedule#weekly-schedule')
+  }
+
   return (
     <div className="relative z-30 bottom-20 w-full lg:w-fit mx-auto lg:ml-auto lg:mr-3 xl:mr-30 px-4 sm:px-6 lg:px-0">
       <div className="font-serif">
         <div className={`${bgColor} w-full lg:w-200 text-white shadow-2xl`}>
           <div className="grid grid-cols-2">
+            {/* Left: now/next show */}
             <div className="flex items-center gap-3 sm:gap-6 px-4 sm:px-6 lg:px-10 py-5 sm:py-7 lg:py-10 border-r border-white/40">
-              <a
+              <a 
                 href="https://streema.com/radios/CHIN_Ottawa_CJLL"
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                <div className="lg:hidden flex  shrink-0 w-8 h-8 sm:w-10 sm:h-10 lg:w-12 lg:h-12 rounded-full border-2 border-white/70  items-center justify-center">
+                <div className="lg:hidden flex shrink-0 w-8 h-8 sm:w-10 sm:h-10 lg:w-12 lg:h-12 rounded-full border-2 border-white/70 items-center justify-center">
                   <svg
                     className="w-4 h-4 sm:w-5 sm:h-5 lg:w-6 lg:h-6"
                     viewBox="0 0 24 24"
@@ -100,7 +106,6 @@ export default function ScheduleBox({ schedules }: { schedules: Schedule[] }) {
                   {upcoming.show.title}
                 </h4>
 
-
                 <div className="flex items-center gap-1 mt-1 text-[10px] sm:text-xs lg:text-sm opacity-90">
                   <svg
                     className="w-3 h-3 sm:w-3.5 sm:h-3.5 shrink-0"
@@ -119,7 +124,13 @@ export default function ScheduleBox({ schedules }: { schedules: Schedule[] }) {
               </div>
             </div>
 
-            <div className="flex flex-col justify-center gap-1 sm:gap-2 px-4 sm:px-6 lg:px-10 py-5 sm:py-7 lg:py-10">
+            {/* Right: Weekly schedule (clickable → navigates + scrolls) */}
+            <button
+              type="button"
+              onClick={goToWeeklySchedule}
+              className="flex flex-col cursor-pointer justify-center gap-1 sm:gap-2 px-4 sm:px-6 lg:px-10 py-5 sm:py-7 lg:py-10 text-left transition-colors hover:bg-white/10 focus:outline-none focus-visible:ring-2 focus-visible:ring-white/60"
+              aria-label="View full weekly schedule"
+            >
               <p className="text-[10px] sm:text-xs lg:text-sm tracking-widest capitalize opacity-80">
                 Weekly schedule:
               </p>
@@ -136,7 +147,7 @@ export default function ScheduleBox({ schedules }: { schedules: Schedule[] }) {
                   <path d="M12 7v5" />
                 </svg>
               </div>
-            </div>
+            </button>
           </div>
         </div>
       </div>
